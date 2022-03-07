@@ -120,3 +120,12 @@ public class PlayerController : MonoBehaviour
         }
     }  
 }
+// 충돌 - 유니티에서 충돌은 다양하게 사용.
+// 크게 두가지로 구분.
+// 1.OnCollision -- Enter, Stay, Exit
+// : 두 콜라이더끼리의 충돌에서 단 하나도 isTrigger가 체크가 되어 있지 않은 경우.
+// 2. OnTrigger  -- Enter, Stay, Exit
+// : 하나라도 isTrigger가 체크가 되어 있는 경우.
+// where? isTrigger?
+// : 오브젝트의 콜라이더 컴포넌트 내 위치.
+// isTrigger 역할 -- 물리적인 벽을 없애줌 + 충돌 감지.
