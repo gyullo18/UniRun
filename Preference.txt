@@ -25,7 +25,7 @@ A B C 라는 사람이 있을경우 A의 사망여부를 C만 알면 B는 사망
 1. 단일성
 2 손쉬운 접근 (한정자 static 사용 : 정적)
 
-######### 중요 
+# 중요 
 public static GameManager instance; // 싱글턴을 할당할 전역 변수 - 인스턴스에 누구나 접근 가능.
 
 private void Awake()
