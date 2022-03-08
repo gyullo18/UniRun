@@ -24,3 +24,23 @@ A B C 라는 사람이 있을경우 A의 사망여부를 C만 알면 B는 사망
 싱글턴 패턴 
 1. 단일성
 2 손쉬운 접근 (한정자 static 사용 : 정적)
+
+######### 중요 
+public static GameManager instance; // 싱글턴을 할당할 전역 변수 - 인스턴스에 누구나 접근 가능.
+
+private void Awake()
+    {
+        // 싱글턴 변수 instance가 비어있는가?
+        if(instance == null)
+        {
+            // instance가 비어있다면 내 자신을 할당.
+            instance = this; // this = 내 자신
+        }
+        else
+        {
+            // instance에 이미 다른 GameManager 오브젝트가 할당되어 있다면,
+            // = 하나의 씬에 두개 이상의 GameManager 오브젝트가 존재한다는 의미.
+            // > 싱글턴 오브젝트는 하나만 존재해야 하므로 자신의 게임 오브젝트를 파괴.
+            Destroy(gameObject);
+        }
+    }
