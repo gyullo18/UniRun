@@ -63,11 +63,12 @@ public class GameManager : MonoBehaviour
         //}
     }
 
-    // 플레이어 캐릭터가 사망 시 게임오버를 실행하는 메서드
+    // 플레이어 캐릭터가 사망 시 게임오버를 실행하는 메서드.
     public void OnPlayerDead()
     {
+        // 현재 상태를 게임오버 상태로 변경.
         isGameover = true;
-        // gameoverUI오브젝트 활성화
+        // gameoverUI오브젝트 - 게임오버 UI 활성화
         gameoverUI.SetActive(true);
     }
 }

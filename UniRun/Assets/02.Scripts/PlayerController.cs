@@ -85,6 +85,9 @@ public class PlayerController : MonoBehaviour
         //playerRigidbody.velocity = new Vector2(0, 0);
         // 5. 사망상태 true로 변경
         isDead = true;
+
+        // 게임 매니저의 게임오버 처리 실행
+        GameManager.instance.OnPlayerDead();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

@@ -10,9 +10,14 @@ public class ScrollingObject : MonoBehaviour
 
     void Update()
     {
-        // 초당 스피드의 속도로 왼쪽으로 평행이동 구현. "transform : 자기 자신의 Transform컴포넌트"
         // Translate - 평행이동 메서드(이동할 거리)
         // Time.deltatime - 초당!!
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        // isGameover가 false(플레이어가 살아있으면)라면,
+        if (!GameManager.instance.isGameover)
+        {
+            // 초당 스피드의 속도로 왼쪽으로 평행이동 구현. "transform : 자기 자신의 Transform컴포넌트"
+            transform.Translate(Vector3.left * speed * Time.deltaTime);
+        }
+        
     }
 }
