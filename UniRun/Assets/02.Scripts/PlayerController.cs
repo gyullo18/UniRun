@@ -121,8 +121,9 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
-    }  
-}
+    }
+}   
+
 // 충돌 - 유니티에서 충돌은 다양하게 사용.
 // 크게 두가지로 구분.
 // 1.OnCollision -- Enter, Stay, Exit
