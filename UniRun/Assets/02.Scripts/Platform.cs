@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour
     // 장애물 오브젝트들을 담는 배열.
     public GameObject[] Obstacles;
     // 플레이어 캐릭터가 밟았는지.
+    [SerializeField]
     private bool stepped = false;
 
     // 새로운 유니티 이벤트 메서드 확인.
