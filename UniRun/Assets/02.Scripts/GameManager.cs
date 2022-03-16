@@ -17,6 +17,14 @@ public class GameManager : MonoBehaviour
 
     private int score = 0; // 게임 점수.
 
+    // 메뉴 패널 변수
+    public GameObject menuPanel;
+
+    // 실제 플레이어의 생명력.
+    public int hpCount = 2;
+    // 사용자에게 보여질 생명력 UI.
+    public Text hpText;
+
     // 게임 시작과 동시에 싱글턴을 구성.
     private void Awake()
     {
@@ -33,6 +41,13 @@ public class GameManager : MonoBehaviour
             // > 싱글턴 오브젝트는 하나만 존재해야 하므로 자신의 게임 오브젝트를 파괴.
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        // 실제 사용자에게 보여질 생명력을 실제 생명력으로 등록.
+        hpText.text = hpCount.ToString();
+
     }
 
     // 게임오버 상태에서 게임을 재시작할 수 있게 하는 처리
@@ -71,4 +86,74 @@ public class GameManager : MonoBehaviour
         // gameoverUI오브젝트 - 게임오버 UI 활성화
         gameoverUI.SetActive(true);
     }
+
+    public void OnMenu()
+    {
+        menuPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void OffMenu()
+    {
+        menuPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+
+    }
+    public void Exit()
+    {
+        // 전처리기 지시어 -- 빌드전에 사용할 목적.
+        // #if UNITY_EDITOR
+        // #else
+        // #endif
+        Application.Quit();
+    }
+
+    // 참고.1
+    //public void MenuControl(bool isActive)
+    //{
+    //    // 메뉴 버튼 - true, 메뉴 패널 - false
+    //    menuPanel.SetActive(isActive);
+    //}
+
+    // 참고.2
+    //public void UIControl(string type)
+    //{
+    //    switch (type)
+    //    {
+    //        // OnClick()에서 UIControl선택후 string에 각 case 입력.
+    //        case "menuon":
+    //            menuPanel.SetActive(true);
+    //            Time.timeScale = 0;
+    //            break;
+    //        case "menuoff":
+    //            menuPanel.SetActive(false);
+    //            Time.timeScale = 1;
+    //            break;
+    //        case "restart":
+    //            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //            Time.timeScale = 1;
+    //            break;
+    //        case "exit":
+    //            Application.Quit();
+    //            break;
+    //    }
+    //}
+
+    // 실행이 되면  hpCount를 감소.
+    public bool Crash()
+    {
+        //hpCount--;
+        //hpText.text = hpCount.ToString();
+        hpText.text = "" + --hpCount;
+        if (hpCount <= 0) return true; // 감소시킨 후 확인 - 조건문에 return의 경우 false인경우의 반환값이 없음.
+        return false; // Crash()가 반환값으로 bool형식을 가지기 때문에 return이 필요.
+    }
+
+     
 }

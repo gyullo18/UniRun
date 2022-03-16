@@ -121,6 +121,11 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+        else if (collision.tag == "Obstacle" && !isDead)
+        {
+            if (GameManager.instance.Crash()) Die();
+            //if (GameManager.instance.Crash()==true) Die();
+        }
     }
 }   
 
